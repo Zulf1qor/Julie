@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 def index_view(request):
     context={
@@ -64,13 +65,28 @@ def blog_single_view(request):
 
 def contact_view(request):
     content = {
-
+        'contact':Contact.objects.all().order_by('-id')[:3],
     }
     return render(request, "contact.html", content)
+
+def crete_comment(request):
+    if request.method == "POST":
+        message = request.POST['message']
+        name = request.POST['name']
+        phone_number = request.POST['phone_number']
+        email = request.POST['email']
+        Massage.objects.create(
+            name = name,
+            email=email,
+            phone_number = phone_number,
+            message = message,
+        )
+        return render(request, "contact.html")
 
 
 def about_view(request):
     content = {
-
+        'about':About_company.objects.last(),
+        'team':Team.objects.all().order_by('-id')[:3]
     }
     return render(request, "about-us.html", content)

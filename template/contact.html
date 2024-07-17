@@ -30,27 +30,15 @@
     <section class="contact-info-area">
       <div class="container">
         <div class="row">
+          {% for i in contact %}
           <div class="col-md-6 col-lg-4">
             <div class="contact-info-item">
-              <h4>CONTACT DIRECTLY</h4>
-              <p>info@example.com</p>
-              <p>+08801234576</p>
+              <h4>{{ i.office }}</h4>
+              <p>{{ i.email }}</p>
+              <p>{{ i.phone_number }}</p>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="contact-info-item">
-              <h4>VISIT OUR OFFICE</h4>
-              <p>184 Main Rd E, St Albans </p>
-              <p>VIC 3021,</p>
-            </div>
-          </div>
-          <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-0">
-            <div class="contact-info-item">
-              <h4>WORK WITH US</h4>
-              <p>Send your CV to our email:</p>
-              <p>career@example.com</p>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </section>
@@ -69,26 +57,27 @@
             <div class="contact-form-content">
               <!--== Start Rsvp Form ==-->
               <div class="contact-form">
-                <form id="contact-form" action="https://whizthemes.com/mail-php/raju/arden/mail.php" method="post">
+                <form id="contact-form" class="form" action="{% url 'create_comment_url' %}" method="post">
+                  {% csrf_token %}
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-group">
-                        <input class="form-control" type="text" name="con_name" placeholder="Your name" required>
+                        <input class="form-control" type="text" name="name" placeholder="Your name" required>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <input class="form-control" type="email" name="con_email" placeholder="Your email" required>
+                        <input class="form-control" type="email" name="email" placeholder="Your email" required>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <input class="form-control" type="text" name="con_phone" placeholder="Phone Number">
+                        <input class="form-control" type="text" name="phone_number" placeholder="Phone Number">
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <textarea class="form-control" name="con_message" placeholder="Your Message"></textarea>
+                        <textarea class="form-control" name="message" placeholder="Your Message"></textarea>
                       </div>
                     </div>
                     <div class="col-md-12">

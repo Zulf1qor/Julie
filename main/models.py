@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
+
+
 class User(AbstractUser):
     phone_number = models.CharField(max_length=13, null=True, blank=True)
     address = models.CharField(max_length=155,  null=True, blank=True)
@@ -8,14 +11,17 @@ class User(AbstractUser):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
+
 class Banner(models.Model):
     title = models.CharField(max_length=55)
     desciption = models.CharField(max_length=255)
     img = models.ImageField(upload_to='img_banner/')
 
+
 class Service(models.Model):
     title = models.CharField(max_length=55)
     desciption = models.CharField(max_length=255)
+
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -32,11 +38,13 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+
 class Category(models.Model):
     name = models.CharField(max_length=55)
     created_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.name
+
 
 class Sub_category(models.Model):
     name = models.CharField(max_length=55)
@@ -100,3 +108,14 @@ class Cart(models.Model):
     user = models.ForeignKey(to='User', on_delete=models.CASCADE)
     product = models.ForeignKey(to='Product', on_delete=models.CASCADE)
 
+class Massage(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=125)
+    phone_number = models.CharField(max_length=13, unique=True, null=True, blank=True, validators=[
+        RegexValidator(
+            regex='^[\+]9{2}8{1}[0-9]{9}$',
+            message='Invalid phone number',
+            code='invalid_number'
+
+        ), ])
+    message = models.TextField()

@@ -15,3 +15,9 @@ class EmployeeAdmin(UserAdmin):
         (_('Extra'), {'fields': ('phone_number' , 'address')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
+
+admin.site.register(About_company)
+admin.site.register(Team)
+admin.site.register(Contact)
+admin.site.register(Massage)
+admin.site.register(Office)

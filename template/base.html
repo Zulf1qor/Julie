@@ -35,7 +35,7 @@
     <!--== Fancybox Min CSS ==-->
     <link href="{% static 'assets/css/fancybox.min.css' %}" rel="stylesheet" />
     <!--== Slicknav Min CSS ==-->
-    <link href="{% static 'assets/css/slicknav.css' %}" rel="stylesheet" />{% static '
+    <link href="{% static 'assets/css/slicknav.css' %}" rel="stylesheet" />
 
     <!--== Main Style CSS ==-->
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
@@ -79,11 +79,7 @@
         <div class="col-sm-4 col-lg-7 d-none d-lg-block">
           <div class="header-navigation-area">
             <ul class="main-menu nav position-relative">
-              <li class="has-submenu"><a href="#/">Home</a>
-                <ul class="submenu-nav">
-                  <li><a href="index.html">Home Demo 1</a></li>
-                  <li><a href="index-two.html">Home Demo 2</a></li>
-                </ul>
+              <li class="has-submenu"><a href="index_url">Home</a>
               </li>
               <li class="has-submenu full-width"><a href="#/">Shop</a>
                 <ul class="submenu-nav submenu-nav-mega">
@@ -135,8 +131,8 @@
                   <li><a href="single-blog-right-sidebar.html">Single Blog Right Sidebar</a></li>
                 </ul>
               </li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="about-us.html">About</a></li>
+              <li><a href="{% url 'contact_url' %}">Contact</a></li>
+              <li><a href="about/">About</a></li>
             </ul>
           </div>
         </div>

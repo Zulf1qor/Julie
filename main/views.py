@@ -90,3 +90,29 @@ def about_view(request):
         'team':Team.objects.all().order_by('-id')[:3]
     }
     return render(request, "about-us.html", content)
+
+
+
+def register_view(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        address = request.POST.get('address')
+        User.objects.create_user(
+            username = username,
+            password = password,
+            address = address,
+        )
+        return redirect("index_url")
+    return render(request,'register.html')
+
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        usr = authenticate(username=username, password=password)
+        if usr is not None:
+            login(request, usr)
+        return redirect("index_url")
+    return render(request,'login.html')

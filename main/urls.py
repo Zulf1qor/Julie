@@ -13,6 +13,9 @@ urlpatterns = [
     path('blog-single/', blog_single_view, name="blog-single_url"),
     path('contact/', contact_view, name="contact_url"),
     path('about/', about_view, name="about_url"),
-    path('crete_comment/', crete_comment, name="create_comment_url")
+    path('crete_comment/', crete_comment, name="create_comment_url"),
+    path('login/', login_view, name="login_url"),
+    path('register/', register_view, name="register_url"),
+
 
 ]

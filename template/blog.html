@@ -30,94 +30,30 @@
         <div class="row">
           <div class="col-lg-8">
             <div class="row">
+              {% for i in blog %}
               <div class="col-12">
                 <!--== Start Blog Item ==-->
                 <div class="post-item">
                   <div class="inner-content">
                     <div class="thumb">
-                      <a href="single-blog.html">
-                        <img class="w-100" src="assets/img/blog/b1.jpg" alt="Image-HasTech">
+                      <a href="{% url 'blog-single_url' i.pk %}">
+                        <img class="w-100" src="{{ i.img.url }}" alt="Image-HasTech">
                       </a>
                     </div>
                     <div class="content">
-                      <h4 class="title"><a href="single-blog.html">Temporibus autem quibusdam</a></h4>
+                      <h4 class="title"><a href="{% url 'blog-single_url' i.pk %}">{{ i.title }}</a></h4>
                       <ul class="meta">
-                        <li><span>post by: </span><a class="author" href="blog.html">Julie demo Admin</a></li>
-                        <li><span> - Jan, 25 , 21</span></li>
+                        <li><span>post by: </span><a class="author" href="blog.html">{{ i.name }}</a></li>
+                        <li><span> {{ i.data }}</span></li>
                       </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
-                      <a class="btn-theme" href="single-blog.html">Read more</a>
+                      <p>{{ i.description }}</p>
+                      <a class="btn-theme" href="{% url 'blog-single_url' i.pk %}">Read more</a>
                     </div>
                   </div>
                 </div>
                 <!--== End Blog Item ==-->
               </div>
-              <div class="col-12">
-                <!--== Start Blog Item ==-->
-                <div class="post-item">
-                  <div class="inner-content">
-                    <div class="thumb">
-                      <a href="single-blog.html">
-                        <img class="w-100" src="assets/img/blog/b2.jpg" alt="Image-HasTech">
-                      </a>
-                    </div>
-                    <div class="content">
-                      <h4 class="title"><a href="single-blog.html">But I must explain to you how all this mistaken ideal</a></h4>
-                      <ul class="meta">
-                        <li><span>post by: </span><a class="author" href="blog.html">Julie demo Admin</a></li>
-                        <li><span> - Jan, 25 , 21</span></li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
-                      <a class="btn-theme" href="single-blog.html">Read more</a>
-                    </div>
-                  </div>
-                </div>
-                <!--== End Blog Item ==-->
-              </div>
-              <div class="col-12">
-                <!--== Start Blog Item ==-->
-                <div class="post-item">
-                  <div class="inner-content">
-                    <div class="thumb">
-                      <a href="single-blog.html">
-                        <img class="w-100" src="assets/img/blog/b3.jpg" alt="Image-HasTech">
-                      </a>
-                    </div>
-                    <div class="content">
-                      <h4 class="title"><a href="single-blog.html">My Favorite White Sneakers From Splurge To Save</a></h4>
-                      <ul class="meta">
-                        <li><span>post by: </span><a class="author" href="blog.html">Julie demo Admin</a></li>
-                        <li><span> - Jan, 25 , 21</span></li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
-                      <a class="btn-theme" href="single-blog.html">Read more</a>
-                    </div>
-                  </div>
-                </div>
-                <!--== End Blog Item ==-->
-              </div>
-              <div class="col-12">
-                <!--== Start Blog Item ==-->
-                <div class="post-item">
-                  <div class="inner-content mb-0">
-                    <div class="thumb">
-                      <a href="single-blog.html">
-                        <img class="w-100" src="assets/img/blog/b1.jpg" alt="Image-HasTech">
-                      </a>
-                    </div>
-                    <div class="content">
-                      <h4 class="title"><a href="single-blog.html">But I must explain to you how all this mistaken ideal</a></h4>
-                      <ul class="meta">
-                        <li><span>post by: </span><a class="author" href="blog.html">Julie demo Admin</a></li>
-                        <li><span> - Jan, 25 , 21</span></li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
-                      <a class="btn-theme" href="single-blog.html">Read more</a>
-                    </div>
-                  </div>
-                </div>
-                <!--== End Blog Item ==-->
-              </div>
+              {% endfor %}
             </div>
             <!--== Start Pagination Wrap ==-->
             <div class="row">
@@ -178,62 +114,21 @@
                   <h3 class="title">Recent Post</h3>
                 </div>
                 <div class="widget-body">
+                  {% for x in blog %}
                   <div class="widget-blog-post">
                     <ul>
                       <li>
                         <div class="thumb">
-                          <a href="blog-details.html"><img src="assets/img/blog/s2.jpg" alt="Image-HasTech"></a>
+                          <a href="{% url 'blog-single_url' x.pk %}"><img src="{{ x.img.url }}" alt="Image-HasTech"></a>
                         </div>
                         <div class="content">
-                          <span>24 July, 2022</span>
-                          <h4><a href="blog-details.html">Summer Collection for Women 2021</a></h4>
+                          <span>{{ x.data }}</span>
+                          <h4><a href="{% url 'blog-single_url' x.pk %}">{{ x.name }}</a></h4>
                         </div>
                       </li>
                     </ul>
                   </div>
-                  <div class="widget-blog-post">
-                    <ul>
-                      <li>
-                        <div class="thumb">
-                          <a href="blog-details.html"><img src="assets/img/blog/s1.jpg" alt="Image-HasTech"></a>
-                        </div>
-                        <div class="content">
-                          <span>24 July, 2022</span>
-                          <h4><a href="blog-details.html">Nicholas K Spring 2021 Runway</a></h4>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="widget-blog-post">
-                    <ul>
-                      <li>
-                        <div class="thumb">
-                          <a href="blog-details.html"><img src="assets/img/blog/s3.jpg" alt="Image-HasTech"></a>
-                        </div>
-                        <div class="content">
-                          <span>24 July, 2022</span>
-                          <h4><a href="blog-details.html">Marc Jacobs Spring 2021 Runway</a></h4>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="widget-item">
-                <div class="widget-title">
-                  <h3 class="title">Tags</h3>
-                </div>
-                <div class="widget-body">
-                  <div class="widget-tags">
-                    <ul>
-                      <li><a href="blog.html">bestselling</a></li>
-                      <li><a href="blog.html">collection</a></li>
-                      <li><a href="blog.html">dress</a></li>
-                      <li><a href="blog.html">fashion</a></li>
-                      <li><a href="blog.html">men</a></li>
-                      <li><a class="mb-0" href="blog.html">women</a></li>
-                    </ul>
-                  </div>
+                  {% endfor %}
                 </div>
               </div>
             </div>

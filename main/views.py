@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
-
+from django.contrib.auth import login, authenticate, logout
 def index_view(request):
     context={
-
+        'banner':Banner.objects.all().order_by("-id")[:2],
+        'service': Service.objects.all().order_by("-id")[:3],
+        'blog':Blog.objects.all().order_by("-id")[:3]
     }
     return render(request, "index.html", context)
 
@@ -21,11 +23,7 @@ def wishlist_view(request):
     return render(request, "wishlist.html", content)
 
 
-def login_view(request):
-    content = {
 
-    }
-    return render(request, "login.html", content)
 
 
 def cart_view(request):
@@ -51,13 +49,17 @@ def product_view(request):
 
 def blog_view(request):
     content = {
+        'blog':Blog.objects.all().order_by("-id")[:3],
 
     }
     return render(request, "blog.html", content)
 
 
-def blog_single_view(request):
+def blog_single_view(request, pk):
+    blog = Blog.objects.get(pk=pk)
     content = {
+        'blog':blog,
+
 
     }
     return render(request, "single-blog.html", content)

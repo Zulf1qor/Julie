@@ -7,28 +7,18 @@
     <section class="home-slider-area">
       <div class="swiper-container swiper-slide-gap home-slider-container default-slider-container">
         <div class="swiper-wrapper home-slider-wrapper slider-default">
+          {% for i in banner %}
           <div class="swiper-slide">
-            <div class="slider-content-area" data-bg-img="assets/img/slider/slider-01.jpg">
+            <div class="slider-content-area" data-bg-img="{{ i.img.url }}">
               <div class="slider-content">
-                <h5 class="sub-title">BEST PRICE : $866</h5>
-                <h2 class="title">NEW ARRIVAL</h2>
-                <h4>70% OFF THIS WINTER</h4>
-                <p>There are many variations of passages of Lorem Ipsum availables, but the majority have suffered alteration in some form.</p>
+                <h4>{{ i.title }}</h4>
+                <p>{{ i.desciption }}</p>
                 <a class="btn-slider" href="shop.html">Shop Now</a>
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
-            <div class="slider-content-area" data-bg-img="assets/img/slider/slider-02.jpg">
-              <div class="slider-content">
-                <h5 class="sub-title">BEST PRICE : $866</h5>
-                <h2 class="title">NEW ARRIVAL</h2>
-                <h4>70% OFF THIS WINTER</h4>
-                <p>There are many variations of passages of Lorem Ipsum availables, but the majority have suffered alteration in some form.</p>
-                <a class="btn-slider" href="shop.html">Shop Now</a>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
+
         </div>
 
         <!--== Add Swiper Arrows ==-->
@@ -42,6 +32,7 @@
     <section class="feature-area">
       <div class="container pb-1">
         <div class="row">
+          {% for i in service %}
           <div class="col-md-6 col-lg-4">
             <!--== Start Feature Item ==-->
             <div class="feature-icon-box">
@@ -50,43 +41,15 @@
                   <i class="icon ei ei-icon_pin_alt"></i>
                 </div>
                 <div class="content">
-                  <h5 class="title">Free shipping worldwide</h5>
-                  <p>Freeship over oder $100</p>
+                  <h5 class="title">{{ i.title }}</h5>
+                  <p>{{ i.desciption }}</p>
                 </div>
               </div>
             </div>
             <!--== End Feature Item ==-->
           </div>
-          <div class="col-md-6 col-lg-4">
-            <!--== Start Feature Item ==-->
-            <div class="feature-icon-box">
-              <div class="inner-content">
-                <div class="icon-box">
-                  <i class="icon ei ei-icon_headphones"></i>
-                </div>
-                <div class="content">
-                  <h5 class="title">Support 24/7</h5>
-                  <p>Contact us 24 hours a day</p>
-                </div>
-              </div>
-            </div>
-            <!--== End Feature Item ==-->
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <!--== Start Feature Item ==-->
-            <div class="feature-icon-box">
-              <div class="inner-content mb-0">
-                <div class="icon-box">
-                  <i class="icon ei ei-icon_creditcard"></i>
-                </div>
-                <div class="content">
-                  <h5 class="title">100% secure payment</h5>
-                  <p>Your payment are safe with us.</p>
-                </div>
-              </div>
-            </div>
-            <!--== End Feature Item ==-->
-          </div>
+          {% endfor %}
+
         </div>
       </div>
     </section>
@@ -2277,94 +2240,30 @@
           <div class="col-12">
             <div class="swiper-container swiper-slide-gap post-slider-container">
               <div class="swiper-wrapper">
+                {% for i in blog %}
                 <div class="swiper-slide">
                   <!--== Start Blog Item ==-->
                   <div class="post-item">
                     <div class="inner-content">
                       <div class="thumb">
                         <a href="single-blog.html">
-                          <img class="w-100" src="assets/img/blog/1.jpg" alt="Image-HasTech">
+                          <img class="w-100" src="{{ i.img.url }}" alt="Image-HasTech">
                         </a>
                       </div>
                       <div class="content">
                         <ul class="meta">
-                          <li><span>post by: </span><a class="author" href="blog.html">Julip</a></li>
-                          <li><span> - Jan, 25 , 21</span></li>
+                          <li><span>post by: </span><a class="author" href="blog.html">{{ i.name }}</a></li>
+                          <li><span>{{ i.data }}</span></li>
                         </ul>
-                        <h4 class="title"><a href="single-blog.html">Hot Summer Fashion for Women new collections arrives</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor incididunt ut labore gthydolore magna aliqua...</p>
+                        <h4 class="title"><a href="single-blog.html">{{ i.title }}</a></h4>
+                        <p>{{ i.description }}</p>
                         <a class="btn-theme" href="single-blog.html">Read more</a>
                       </div>
                     </div>
                   </div>
                   <!--== End Blog Item ==-->
                 </div>
-                <div class="swiper-slide">
-                  <!--== Start Blog Item ==-->
-                  <div class="post-item">
-                    <div class="inner-content">
-                      <div class="thumb">
-                        <a href="single-blog.html">
-                          <img class="w-100" src="assets/img/blog/2.jpg" alt="Image-HasTech">
-                        </a>
-                      </div>
-                      <div class="content">
-                        <ul class="meta">
-                          <li><span>post by: </span><a class="author" href="blog.html">Morem</a></li>
-                          <li><span> - Jan, 24 , 22</span></li>
-                        </ul>
-                        <h4 class="title"><a href="single-blog.html">But I must explain to you how all this mistaken ideal</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor incididunt ut labore gthydolore magna aliqua...</p>
-                        <a class="btn-theme" href="single-blog.html">Read more</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!--== End Blog Item ==-->
-                </div>
-                <div class="swiper-slide">
-                  <!--== Start Blog Item ==-->
-                  <div class="post-item">
-                    <div class="inner-content">
-                      <div class="thumb">
-                        <a href="single-blog.html">
-                          <img class="w-100" src="assets/img/blog/3.jpg" alt="Image-HasTech">
-                        </a>
-                      </div>
-                      <div class="content">
-                        <ul class="meta">
-                          <li><span>post by: </span><a class="author" href="blog.html">Adapo</a></li>
-                          <li><span> - Jan, 20 , 22</span></li>
-                        </ul>
-                        <h4 class="title"><a href="single-blog.html">My Favorite White Sneakers From Splurge To Save</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor incididunt ut labore gthydolore magna aliqua...</p>
-                        <a class="btn-theme" href="single-blog.html">Read more</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!--== End Blog Item ==-->
-                </div>
-                <div class="swiper-slide">
-                  <!--== Start Blog Item ==-->
-                  <div class="post-item">
-                    <div class="inner-content">
-                      <div class="thumb">
-                        <a href="single-blog.html">
-                          <img class="w-100" src="assets/img/blog/1.jpg" alt="Image-HasTech">
-                        </a>
-                      </div>
-                      <div class="content">
-                        <ul class="meta">
-                          <li><span>post by: </span><a class="author" href="blog.html">Julip</a></li>
-                          <li><span> - Jan, 25 , 21</span></li>
-                        </ul>
-                        <h4 class="title"><a href="single-blog.html">On the other hand we provide denounce with righteous</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor incididunt ut labore gthydolore magna aliqua...</p>
-                        <a class="btn-theme" href="single-blog.html">Read more</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!--== End Blog Item ==-->
-                </div>
+                {% endfor %}
               </div>
               <!--== Add Swiper navigation Buttons ==-->
               <div class="swiper-button-prev"><i class="ei ei-icon_arrow_carrot-left"></i></div>

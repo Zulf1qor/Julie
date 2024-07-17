@@ -21,7 +21,7 @@ class Banner(models.Model):
 class Service(models.Model):
     title = models.CharField(max_length=55)
     desciption = models.CharField(max_length=255)
-
+    img = models.ImageField(upload_to="service_img/")
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -66,7 +66,9 @@ class Size(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=255)
-    category = models.ForeignKey(to='Block_category', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    category = models.ForeignKey(to='Block_category', on_delete=models.CASCADE, null=True, blank=True)
+    data = models.DateField(auto_now=True)
     description = models.CharField(max_length=255)
     text = models.TextField(null=True, blank=True)
     img = models.ImageField(upload_to='blog_photo')

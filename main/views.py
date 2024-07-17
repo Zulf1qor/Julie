@@ -42,7 +42,7 @@ def checkout_view(request):
 
 def product_view(request):
     content = {
-
+        'product':Product.objects.last()
     }
     return render(request, "product.html", content)
 

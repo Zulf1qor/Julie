@@ -25,18 +25,24 @@ class Service(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    category = models.ForeignKey(to='Sub_category' , on_delete=models.CASCADE)
+    category = models.ForeignKey(to='Category' , on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.TextField()
     is_sale = models.BooleanField(default=False)
     old_cost = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     rating = models.FloatField(default=0)
     soldout = models.BooleanField()
     shopping_policy = models.TextField()
+    text = models.TextField()
     color = models.ForeignKey(to='Color', on_delete=models.CASCADE)
     size = models.ForeignKey(to='Size', on_delete=models.CASCADE)
-    img = models.ImageField(upload_to='product_img/')
+    material = models.ForeignKey(to='Material', on_delete=models.CASCADE)
+    img = models.ManyToManyField(to='Image')
     def __str__(self):
         return self.name
+
+class Image(models.Model):
+    img = models.ImageField(upload_to='Imagge/')
 
 
 class Category(models.Model):
@@ -63,6 +69,11 @@ class Size(models.Model):
     def __str__(self):
         return self.name
 
+class Material(models.Model):
+    name = models.CharField(max_length=55)
+
+    def __str__(self):
+        return self.name
 
 class Blog(models.Model):
     title = models.CharField(max_length=255)

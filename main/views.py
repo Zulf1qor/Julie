@@ -42,7 +42,11 @@ def checkout_view(request):
 
 def product_view(request):
     content = {
-        'product':Product.objects.last()
+        'product':Product.objects.last(),
+        'products':Product.objects.all().order_by("-id")[:5],
+        'size':Size.objects.all().order_by("-id")[:4],
+        'color':Color.objects.all().order_by("-id")[:5],
+        'material':Material.objects.all().order_by("-id")[:5]
     }
     return render(request, "product.html", content)
 

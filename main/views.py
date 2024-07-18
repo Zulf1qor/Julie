@@ -63,10 +63,23 @@ def blog_single_view(request, pk):
     blog = Blog.objects.get(pk=pk)
     content = {
         'blog':blog,
+        'comments': Comment.objects.filter(blog=blog)
 
 
     }
     return render(request, "single-blog.html", content)
+
+def create_comment(request, pk):
+    blog = Blog.objects.get(pk=pk)
+    if request.method == "POST":
+        text = request.POST['text']
+        Comment.objects.create(
+        user= request.user,
+        blog = blog,
+        text = text,
+
+        )
+    return redirect('blog-single_url', blog.id)
 
 
 def contact_view(request):
@@ -75,7 +88,7 @@ def contact_view(request):
     }
     return render(request, "contact.html", content)
 
-def crete_comment(request):
+def crete_comment_contact(request):
     if request.method == "POST":
         message = request.POST['message']
         name = request.POST['name']

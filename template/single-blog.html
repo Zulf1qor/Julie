@@ -49,30 +49,21 @@
               <div class="comment-view-area">
                 <h4 class="title">4 comments</h4>
                 <div class="comment-view-content">
+                  {% for i in comments  %}
                   <div class="single-comment">
                     <div class="author-wrap">
                       <div class="author-pic">
-                        <img src="assets/img/blog/comment.jpg" alt="Image-HasTech">
+                        <img src="{{ i.user.avatar }}" alt="Image-HasTech">
                       </div>
                       <div class="author-info">
-                        <h4 class="title"><a href="blog.html">Elijah</a></h4>
-                        <h5 class="sub-title">Sep 30, 2020 at 03:20</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis dicta ea consequuntur veniam unde quam natus corporis atque laboriosam.</p>
+                        <h4 class="title"><a href="#">{{ i.user.username }}</a></h4>
+                        <h5 class="sub-title">{{ i.date }}</h5>
+                        <p>{{ i.text }}</p>
                       </div>
                     </div>
                   </div>
-                  <div class="single-comment">
-                    <div class="author-wrap">
-                      <div class="author-pic">
-                        <img src="assets/img/blog/comment2.jpg" alt="Image-HasTech">
-                      </div>
-                      <div class="author-info">
-                        <h4 class="title"><a href="blog.html">William</a></h4>
-                        <h5 class="sub-title">Sep 30, 2020 at 03:11</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis dicta ea consequuntur veniam unde quam natus corporis atque laboriosam.</p>
-                      </div>
-                    </div>
-                  </div>
+                  {% endfor %}
+
                 </div>
               </div>
               <!--== End Comment View Item ==-->
@@ -99,24 +90,13 @@
                 <h4 class="title">Leave a comment</h4>
                 <p>Your email address will not be published</p>
                 <div class="comment-form-content">
-                  <form action="#">
+                  <form action="{% url 'create_comment_url' blog.id %}" method="post">
+                    {% csrf_token %}
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label for="for_comment">Comment</label>
-                          <textarea id="for_comment" class="form-control" placeholder="Message"></textarea>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="for_name">Name</label>
-                          <input id="for_name" class="form-control" type="text" placeholder="Name">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="for_email">Email</label>
-                          <input id="for_email" class="form-control" type="email" placeholder="Email">
+                          <label for="for_comment" >Comment</label>
+                          <textarea id="for_comment" name="text" class="form-control" placeholder="Message"></textarea>
                         </div>
                       </div>
                       <div class="col-md-12">

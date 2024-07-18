@@ -132,3 +132,10 @@ class Massage(models.Model):
 
         ), ])
     message = models.TextField()
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(to=Blog, on_delete=models.CASCADE)
+    text = models.CharField(max_length=255)
+    date = models.DateTimeField(auto_now=True)

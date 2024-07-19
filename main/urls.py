@@ -17,4 +17,6 @@ urlpatterns = [
     path('login/', login_view, name="login_url"),
     path('register/', register_view, name="register_url"),
     path('comment/<int:pk>/', create_comment, name="create_comment_url"),
+    path('filter_by_product/<int:pk>/', filter_product_view, name="filter_by_product_url"),
+
 ]

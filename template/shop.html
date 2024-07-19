@@ -220,12 +220,11 @@
                 <h4 class="product-sidebar-title">Custom Menu</h4>
                 <div class="product-sidebar-body">
                   <div class="product-sidebar-nav-menu">
-                    <a href="shop.html">Home</a>
-                    <a class="active" href="shop.html">Shop</a>
-                    <a href="shop.html">Products</a>
-                    <a href="shop.html">Blog</a>
-                    <a href="shop.html">Contact</a>
-                    <a href="shop.html">About</a>
+                    <a href="{% url 'index_url' %}">Home</a>
+                    <a class="active" href="{% url 'shop_url' %}">Shop</a>
+                    <a href="{% url 'blog_url' %}">Blog</a>
+                    <a href="{% url 'contact_url' %}">Contact</a>
+                    <a href="{% url 'about_url' %}">About</a>
                   </div>
                 </div>
               </div>
@@ -236,14 +235,15 @@
                 <h4 class="product-sidebar-title">Top Rated Products</h4>
                 <div class="product-sidebar-body">
                   <!--== Start Product Item ==-->
+                  {% for i in rated %}
                   <div class="product-sidebar-item">
                     <div class="thumb">
-                      <a href="single-product-simple.html">
-                        <img class="w-100" src="assets/img/shop/7.jpg" alt="Image-HasTech">
+                      <a href="{% url 'product_url' i.pk %}">
+                        <img class="w-100" src="{{ i.img.url }}" alt="Image-HasTech">
                       </a>
                     </div>
                     <div class="content">
-                      <h4 class="title"><a href="shop.html">Literature Classical</a></h4>
+                      <h4 class="title"><a href="shop.html">{{ i.name }}</a></h4>
                       <div class="product-review">
                         <i class="fa fa-star-o"></i>
                         <i class="fa fa-star-o"></i>
@@ -252,33 +252,11 @@
                         <i class="fa fa-star-o"></i>
                       </div>
                       <div class="product-price">
-                        <span>$79.00</span>
+                        <span>{{ i.price }}</span>
                       </div>
                     </div>
                   </div>
-                  <!--== End Product Item ==-->
-
-                  <!--== Start Product Item ==-->
-                  <div class="product-sidebar-item">
-                    <div class="thumb">
-                      <a href="single-product-simple.html">
-                        <img class="w-100" src="assets/img/shop/19.jpg" alt="Image-HasTech">
-                      </a>
-                    </div>
-                    <div class="content">
-                      <h4 class="title"><a href="shop.html">Randomised Words</a></h4>
-                      <div class="product-review">
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                      </div>
-                      <div class="product-price">
-                        <span>$39.00</span>
-                      </div>
-                    </div>
-                  </div>
+                  {% endfor %}
                   <!--== End Product Item ==-->
                 </div>
               </div>
@@ -354,33 +332,6 @@
               {% endfor %}
               <!--== End Sidebar Item ==-->
 
-              <!--== Start Sidebar Item ==-->
-              <div class="product-sidebar-item">
-                <h4 class="product-sidebar-title">Banner</h4>
-                <div class="product-sidebar-body">
-                  <div class="product-sidebar-banner">
-                    <a href="shop.html">
-                      <img class="w-100" src="assets/img/shop/banner/6.jpg" alt="Image-HasTech">
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <!--== End Sidebar Item ==-->
-
-              <!--== Start Sidebar Item ==-->
-              <div class="product-sidebar-item">
-                <h4 class="product-sidebar-title">Tags</h4>
-                <div class="product-sidebar-body">
-                  <div class="product-sidebar-tag">
-                    <a href="shop.html">black</a>
-                    <a href="shop.html">blue</a>
-                    <a href="shop.html">fiber</a>
-                    <a href="shop.html">gold</a>
-                    <a href="shop.html">gray</a>
-                  </div>
-                </div>
-              </div>
-              <!--== End Sidebar Item ==-->
             </div>
             <!--== End Product Sidebar Wrapper ==-->
           </div>

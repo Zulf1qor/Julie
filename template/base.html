@@ -79,11 +79,12 @@
         <div class="col-sm-4 col-lg-7 d-none d-lg-block">
           <div class="header-navigation-area">
             <ul class="main-menu nav position-relative">
-              <li class="has-submenu"><a href="index_url">Home</a>
+              <li class="has-submenu"><a href="{% url 'index_url' %}">Home</a>
               </li>
               <li class="has-submenu full-width"><a href="#/">Shop</a>
                 <ul class="submenu-nav submenu-nav-mega">
                   <li class="mega-menu-item"><a href="{% url 'shop_url'  %}" class="mega-title">Shop</a>
+
                     <ul>
                       <li><a href="login.html">My Account</a></li>
                       <li><a href="wishlist.html">Wishlist</a></li>
@@ -93,9 +94,9 @@
                   </li>
                 </ul>
               </li>
-              <li class="has-submenu"><a href="product/">Products</a>
+              <li class="has-submenu"><a href="">Products</a>
               </li>
-              <li class="has-submenu"><a href="blog/">Blog</a>
+              <li class="has-submenu"><a href="{% url 'blog_url' %}">Blog</a>
               </li>
               <li><a href="{% url 'contact_url' %}">Contact</a></li>
               <li><a href="about/">About</a></li>

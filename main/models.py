@@ -25,7 +25,7 @@ class Service(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    category = models.ForeignKey(to='Category' , on_delete=models.CASCADE)
+    category = models.ForeignKey(to='Category', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
     is_sale = models.IntegerField(default=0, null=True, blank=True)
@@ -43,7 +43,6 @@ class Product(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=55)
-    created_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.name
 
@@ -83,6 +82,9 @@ class Block_category(models.Model):
 
     def __str__(self):
         return self.name
+
+class Logo(models.Model):
+    image = models.ImageField(upload_to='Logo_image/')
 
 class Contact(models.Model):
     email = models.EmailField()

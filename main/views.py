@@ -2,17 +2,32 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth import login, authenticate, logout
 def index_view(request):
+    active_category = Category.objects.first()
     context={
         'banner':Banner.objects.all().order_by("-id")[:2],
         'service': Service.objects.all().order_by("-id")[:3],
-        'blog':Blog.objects.all().order_by("-id")[:3]
+        'blog':Blog.objects.all().order_by("-id")[:3],
+        'product': Product.objects.all().order_by("-id")[:8],
+        'pro': Product.objects.all().order_by("-id")[:16],
+        'img':Product.objects.all().order_by("-id")[:2],
+        'logo':Logo.objects.all().order_by("-id")[:7],
+        'categories': Category.objects.all().order_by("-id")[:3],
+        'active_products': Product.objects.filter(category=active_category).order_by("-id")[:3]
     }
     return render(request, "index.html", context)
+
+
+def filter_product_view(request, pk):
+    category = Category.objects.get(pk=pk)
+    context = {
+        'active_product':Product.objects.filter(category=category)
+    }
+    return render(request, 'index.html', context)
 
 def shop_view(request):
     content = {
         'shop': Product.objects.all().order_by("-id")[:18],
-
+        'rated':Product.objects.all().order_by("-id")[:2]
 
     }
     return render(request, "shop.html", content)

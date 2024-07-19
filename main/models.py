@@ -28,22 +28,18 @@ class Product(models.Model):
     category = models.ForeignKey(to='Category' , on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
-    is_sale = models.BooleanField(default=False)
-    old_cost = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    is_sale = models.IntegerField(default=0, null=True, blank=True)
+    new_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     rating = models.FloatField(default=0)
-    soldout = models.BooleanField()
+    soldout = models.BooleanField(null=True, blank=True)
     shopping_policy = models.TextField()
     text = models.TextField()
     color = models.ForeignKey(to='Color', on_delete=models.CASCADE)
     size = models.ForeignKey(to='Size', on_delete=models.CASCADE)
     material = models.ForeignKey(to='Material', on_delete=models.CASCADE)
-    img = models.ManyToManyField(to='Image')
+    img = models.ImageField(upload_to='Imagge/')
     def __str__(self):
         return self.name
-
-class Image(models.Model):
-    img = models.ImageField(upload_to='Imagge/')
-
 
 class Category(models.Model):
     name = models.CharField(max_length=55)
@@ -52,9 +48,6 @@ class Category(models.Model):
         return self.name
 
 
-class Sub_category(models.Model):
-    name = models.CharField(max_length=55)
-    category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
 
 
 class Color(models.Model):

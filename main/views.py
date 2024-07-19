@@ -11,6 +11,8 @@ def index_view(request):
 
 def shop_view(request):
     content = {
+        'r_shop': Product.objects.all().order_by("-id")[:18],
+        'l_shop': Product.objects.all().order_by("-id")[18:40],
 
     }
     return render(request, "shop.html", content)
@@ -40,13 +42,10 @@ def checkout_view(request):
     return render(request, "checkout.html", content)
 
 
-def product_view(request):
+def product_view(request, pk):
+    product = Product.objects.get(pk=pk)
     content = {
-        'product':Product.objects.last(),
-        'products':Product.objects.all().order_by("-id")[:5],
-        'size':Size.objects.all().order_by("-id")[:4],
-        'color':Color.objects.all().order_by("-id")[:5],
-        'material':Material.objects.all().order_by("-id")[:5]
+        'product': product,
     }
     return render(request, "product.html", content)
 

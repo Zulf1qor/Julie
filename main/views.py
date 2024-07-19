@@ -11,8 +11,8 @@ def index_view(request):
 
 def shop_view(request):
     content = {
-        'r_shop': Product.objects.all().order_by("-id")[:18],
-        'l_shop': Product.objects.all().order_by("-id")[18:40],
+        'shop': Product.objects.all().order_by("-id")[:18],
+
 
     }
     return render(request, "shop.html", content)

@@ -59,7 +59,7 @@
               <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
                   <div class="row">
-                    {% for i in r_shop %}
+                    {% for i in shop %}
                     <div class="col-sm-6 col-xl-4">
                       <!--== Start Shop Item ==-->
                       <div class="product-item">
@@ -126,7 +126,7 @@
                 </div>
                 <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
                   <div class="row">
-                    {% for i in l_shop %}
+                    {% for i in shop %}
                     <div class="col-12">
                       <!--== Start Shop Item ==-->
                       <div class="product-item product-item-list">
@@ -149,7 +149,7 @@
                                     <span class="price">{{ i.price }}</span>
                                     <span class="price-old">{{ i.new_price }}</span>
                                   </div>
-                                  <p>{{ i.desciption }}</p>
+                                  <p>{{ i.description }}</p>
                                   <div class="product-action">
                                     <div class="addto-wrap">
                                       <a class="add-cart" href="cart.html">
@@ -285,7 +285,7 @@
               <!--== End Sidebar Item ==-->
 
               <!--== Start Sidebar Item ==-->
-              {% for i in r_shop %}
+              {% for i in shop %}
               <div class="product-sidebar-item">
                 <h4 class="product-sidebar-title">Categories</h4>
                 <div class="product-sidebar-body">
@@ -329,7 +329,7 @@
               <!--== End Sidebar Item ==-->
 
               <!--== Start Sidebar Item ==-->
-              {% for i in r_shop %}
+              {% for i in shop %}
               <div class="product-sidebar-item">
                 <h4 class="product-sidebar-title">Color</h4>
                 <div class="product-sidebar-body">
@@ -342,7 +342,7 @@
               <!--== End Sidebar Item ==-->
 
               <!--== Start Sidebar Item ==-->
-              {% for i in r_shop %}
+              {% for i in shop %}
               <div class="product-sidebar-item">
                 <h4 class="product-sidebar-title">Size</h4>
                 <div class="product-sidebar-body">

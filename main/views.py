@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth import login, authenticate, logout
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 def index_view(request):
     active_category = Category.objects.first()
     context={
@@ -27,15 +29,14 @@ def filter_product_view(request, pk):
 def shop_view(request):
     content = {
         'shop': Product.objects.all().order_by("-id")[:18],
-        'rated':Product.objects.all().order_by("-id")[:2]
-
+        'rated':Product.objects.all().order_by("-id")[:2],
     }
     return render(request, "shop.html", content)
 
 
 def wishlist_view(request):
-    content = {
 
+    content = {
     }
     return render(request, "wishlist.html", content)
 

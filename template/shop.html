@@ -108,20 +108,35 @@
 
                   </div>
                   <!--== Start Pagination Wrap ==-->
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="pagination-content-wrap border-top">
-                        <nav class="pagination-nav">
-                          <ul class="pagination justify-content-center">
-                            <li><a class="disabled active prev" href="shop.html">Prev</a></li>
-                            <li><a class="disabled active" href="shop.html">1</a></li>
-                            <li><a href="shop.html">2</a></li>
-                            <li><a class="next" href="shop.html">Next</a></li>
-                          </ul>
-                        </nav>
-                      </div>
+                  {% if items_page %} {% for item in items_page %}
+                  <div class="card mb-1">
+                    <div class="card-body">
+                      <p class="card-title">{{ item.title }}</p>
                     </div>
-                  </div>
+                  </div>{% endfor %} {% if items_page.has_other_pages %}<div class="btn-group" role="group" aria-label="Item pagination">
+                  {% if items_page.has_previous %}
+                  <a href="?page={{ items_page.previous_page_number }}" class="btn btn-outline-primary">&laquo;</a>
+                  {% endif %}
+                  {% for page_number in items_page.paginator.page_range %}
+                  {% if items_page.number == page_number %}
+                  <button class="btn btn-outline-primary active">
+                    <span>{{ page_number }} <span class="sr-only">(current)</span></span>
+                  </button>
+                  {% else %}
+                  <a href="?page={{ page_number }}" class="btn btn-outline-primary">
+                    {{ page_number }}
+                  </a>
+                  {% endif %}
+                  {% endfor %}
+
+                        {% if items_page.has_next %}
+                            <a href="?page={{ items_page.next_page_number }}" class="btn btn-outline-primary">&raquo;</a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <p>No items found.</p>
+                {% endif %}
                   <!--== End Pagination Wrap ==-->
                 </div>
                 <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">

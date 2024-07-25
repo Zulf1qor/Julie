@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth import login, authenticate, logout
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
 def index_view(request):
     active_category = Category.objects.first()
     context={
@@ -27,7 +28,17 @@ def filter_product_view(request, pk):
     return render(request, 'index.html', context)
 
 def shop_view(request):
+    items = Product.objects.all()
+    # Set up pagination
+    paginator = Paginator(items, 2)  # Show 10 items per page
+    page_number = request.GET.get('page')  # Get the page number from the URL
+    page_obj = paginator.get_page(page_number)  # Get the page object
     content = {
+        'page_obj':page_obj,
+        'color':Color.objects.all().order_by("-id")[:5],
+        'size':Size.objects.all().order_by("-id")[:5],
+        'vendors':Vendors.objects.all().order_by("-id")[:5],
+        'categorys':Category.objects.all().order_by("-id")[:5],
         'shop': Product.objects.all().order_by("-id")[:18],
         'rated':Product.objects.all().order_by("-id")[:2],
     }

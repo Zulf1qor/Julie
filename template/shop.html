@@ -157,23 +157,43 @@
                     </div>
                     {% endfor %}
                   </div>
+
                   <!--== Start Pagination Wrap ==-->
                   <div class="row">
-                    <div class="col-12">
-                      <div class="pagination-content-wrap border-top">
-                        <nav class="pagination-nav">
-                          <ul class="pagination justify-content-center">
-                            <li><a class="disabled active prev" href="shop-list.html">Prev</a></li>
-                            <li><a class="disabled active" href="shop-list.html">1</a></li>
-                            <li><a href="shop-list.html">2</a></li>
-                            <li><a href="shop-list.html">3</a></li>
-                            <li><a href="shop-list.html">...</a></li>
-                            <li><a href="shop-list.html">5</a></li>
-                            <li><a class="next" href="shop-list.html">Next</a></li>
-                          </ul>
-                        </nav>
+                      <div class="col-12">
+                          <div class="pagination-content-wrap border-top">
+                              <nav class="pagination-nav">
+                                  <ul class="pagination justify-content-center">
+                                      <!-- Previous Page Link -->
+                                      {% if page_obj.has_previous %}
+                                          <li><a class="prev" href="?page=1">First</a></li>
+                                          <li><a class="prev" href="?page={{ page_obj.previous_page_number }}">Prev</a></li>
+                                      {% else %}
+                                          <li><a class="disabled prev" href="#">First</a></li>
+                                          <li><a class="disabled prev" href="#">Prev</a></li>
+                                      {% endif %}
+
+                                      <!-- Page Number Links -->
+                                      {% for num in page_obj.paginator.page_range %}
+                                          {% if page_obj.number == num %}
+                                              <li><a class="disabled active" href="#">{{ num }}</a></li>
+                                          {% else %}
+                                              <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                          {% endif %}
+                                      {% endfor %}
+
+                                      <!-- Next Page Link -->
+                                      {% if page_obj.has_next %}
+                                          <li><a class="next" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                                          <li><a class="next" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+                                      {% else %}
+                                          <li><a class="disabled next" href="#">Next</a></li>
+                                          <li><a class="disabled next" href="#">Last</a></li>
+                                      {% endif %}
+                                  </ul>
+                              </nav>
+                          </div>
                       </div>
-                    </div>
                   </div>
                   <!--== End Pagination Wrap ==-->
                 </div>
@@ -247,73 +267,61 @@
               <!--== End Sidebar Item ==-->
 
               <!--== Start Sidebar Item ==-->
-              {% for i in shop %}
+
               <div class="product-sidebar-item">
                 <h4 class="product-sidebar-title">Categories</h4>
+                  {% for i in categorys %}
                 <div class="product-sidebar-body">
                   <div class="product-sidebar-nav-menu">
-                    <a href="shop.html">{{ i.category }}}</a>
+                    <a href="shop.html">{{ i.name }}</a>
 
                   </div>
                 </div>
+                  {% endfor %}
               </div>
-              {% endfor %}
+
               <!--== End Sidebar Item ==-->
 
               <!--== Start Sidebar Item ==-->
               <div class="product-sidebar-item">
                 <h4 class="product-sidebar-title">Vendors</h4>
+                {% for i in vendors %}
                 <div class="product-sidebar-body">
                   <div class="product-sidebar-nav-menu">
-                    <a href="shop.html">Vendor <span>1</span></a>
-                    <a href="shop.html">Vendor <span>10</span></a>
-                    <a href="shop.html">Vendor <span>11</span></a>
-                    <a href="shop.html">Vendor <span>2</span></a>
-                    <a href="shop.html">Vendor <span>3</span></a>
+                    <a href="shop.html">{{ i.name }} <span>{{i.number}}</span></a>
                   </div>
                 </div>
+                {% endfor %}
               </div>
               <!--== End Sidebar Item ==-->
-
               <!--== Start Sidebar Item ==-->
-              <div class="product-sidebar-item">
-                <h4 class="product-sidebar-title">Products Types</h4>
-                <div class="product-sidebar-body">
-                  <div class="product-sidebar-nav-menu">
-                    <a href="shop.html">Type <span>1</span></a>
-                    <a href="shop.html">Type <span>10</span></a>
-                    <a href="shop.html">Type <span>11</span></a>
-                    <a href="shop.html">Type <span>2</span></a>
-                    <a href="shop.html">Type <span>3</span></a>
-                  </div>
-                </div>
-              </div>
-              <!--== End Sidebar Item ==-->
 
-              <!--== Start Sidebar Item ==-->
-              {% for i in shop %}
               <div class="product-sidebar-item">
                 <h4 class="product-sidebar-title">Color</h4>
+                {% for i in color %}
                 <div class="product-sidebar-body">
                   <div class="product-sidebar-nav-menu">
-                    <a href="shop.html">{{ i.color }}</a>
+                    <a href="shop.html">{{ i.name }}</a>
                   </div>
                 </div>
+                {% endfor %}
               </div>
-              {% endfor %}
+
               <!--== End Sidebar Item ==-->
 
               <!--== Start Sidebar Item ==-->
-              {% for i in shop %}
+
               <div class="product-sidebar-item">
                 <h4 class="product-sidebar-title">Size</h4>
+                  {% for i in size %}
                 <div class="product-sidebar-body">
                   <div class="product-sidebar-nav-menu">
-                    <a href="shop.html">{{ i.size }}</a>
+                    <a href="shop.html">{{ i.name }}</a>
                   </div>
                 </div>
+                  {% endfor %}
               </div>
-              {% endfor %}
+
               <!--== End Sidebar Item ==-->
 
             </div>
